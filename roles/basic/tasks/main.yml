@@ -1,0 +1,11 @@
+---
+
+- name: install basic package
+  dnf: name={{ item }} state=present
+  with_items:
+     - vim
+     - krb5-devel
+     - krb5-workstation
+     - git
+     - tree
+     - xchat

@@ -1,0 +1,9 @@
+---
+
+- name: Get root ca.crt
+  get_url: url={{ item }} dest=/etc/pki/ca-trust/source/anchors/
+  with_items:
+    - "{{ root_cert_url }}"
+
+- name: Update ca trust
+  command: 'update-ca-trust extract'

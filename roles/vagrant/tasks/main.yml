@@ -1,0 +1,29 @@
+---
+
+- name: download vagrant
+  get_url: url=https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.rpm dest=/tmp/vagrant.rpm
+
+- name: Install vagrant
+  dnf: name=/tmp/vagrant.rpm
+
+- name: Install libvirt
+  dnf: name={{ item }} state=present
+  with_items:
+    - vagrant-libvirt
+    - libvirt-devel
+    - libvirt
+    - libselinux-python
+
+- name: Start libvirtd 
+  service: 
+    name: libvirtd
+    state: started
+
+- name: Vagrant plugins
+  command:  "{{ item }}"
+  with_items:
+    - vagrant plugin install vagrant-libvirt
+    - vagrant plugin install vagrant-hostsupdater
+  become: True
+  become_method: su
+  become_user: "{{ vagrant_user }}"
