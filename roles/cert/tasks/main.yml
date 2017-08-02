@@ -4,6 +4,8 @@
   get_url: url={{ item }} dest=/etc/pki/ca-trust/source/anchors/
   with_items:
     - "{{ root_cert_url }}"
+  tags: configuration
 
 - name: Update ca trust
   command: 'update-ca-trust extract'
+  tags: configuration

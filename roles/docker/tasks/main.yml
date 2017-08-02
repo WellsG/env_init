@@ -5,3 +5,4 @@
   with_items:
     - docker
     - docker-compose
+  tags: packages

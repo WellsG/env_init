@@ -2,3 +2,4 @@
 
 - name: get gerrit hook - commit-msg
   get_url: url={{ gerrit_url }}/gerrit/tools/hooks/commit-msg dest=/tmp/commit-msg
+  tags: configuration

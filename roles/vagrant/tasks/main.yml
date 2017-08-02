@@ -2,9 +2,11 @@
 
 - name: download vagrant
   get_url: url=https://releases.hashicorp.com/vagrant/{{ vagrant_version }}/vagrant_{{ vagrant_version }}_x86_64.rpm dest=/tmp/vagrant.rpm
+  tags: vagrant
 
 - name: Install vagrant
   dnf: name=/tmp/vagrant.rpm
+  tags: vagrant
 
 - name: Install libvirt
   dnf: name={{ item }} state=present
@@ -13,11 +15,13 @@
     - libvirt-devel
     - libvirt
     - libselinux-python
+  tags: vagrant
 
 - name: Start libvirtd 
   service: 
     name: libvirtd
     state: started
+  tags: vagrant
 
 - name: Vagrant plugins
   command:  "{{ item }}"
@@ -27,6 +31,7 @@
   become: True
   become_method: su
   become_user: "{{ vagrant_user }}"
+  tags: vagrant
 
 # Using libvirt provider requires you to type your administrator password every time you create, start, halt or
 # destroy your domains. Fortunately you can avoid this by adding vagrant user to the libvirt group
@@ -35,3 +40,4 @@
   with_items:
     - gpasswd -a {{ vagrant_user }} libvirt
     - newgrp libvirt
+  tags: vagrant

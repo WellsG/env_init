@@ -9,9 +9,11 @@
      - git
      - tree
      - xchat
+  tags: packages
 
 - name: copy the krb5 configuration file
   template: src=krb5/krb5.conf.j2 dest=/etc/krb5.conf
+  tags: configuration
 
 - name: check the ssh key exists
   stat: 
@@ -20,6 +22,7 @@
   become: True
   become_method: su
   become_user: "{{ user }}"
+  tags: configuration
 
 - name: generate ssh key for user
   command: ssh-keygen -t rsa -f ~/.ssh/{{ key_id }} -N ''
@@ -27,3 +30,4 @@
   become: True
   become_method: su
   become_user: "{{ user }}"
+  tags: configuration
