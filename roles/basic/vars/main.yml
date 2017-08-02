@@ -1,0 +1,7 @@
+---
+
+# kerberos
+realm_name: ""
+kdc_server: ""
+admin_server: ""
+

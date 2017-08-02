@@ -1,7 +1,7 @@
 ---
 - hosts: localhost
   roles:
-    - {role: "../roles/basic"}
+    # - {role: "../roles/basic"}
     - {role: "../roles/vagrant"}
     - {role: "../roles/docker"}
       #- {role: "../roles/cert"}
