@@ -1,5 +1,10 @@
 ---
 
+user: wguo
+
+# ssh key
+key_id: id_rsa_test
+
 # kerberos
 realm_name: ""
 kdc_server: ""
