@@ -27,3 +27,11 @@
   become: True
   become_method: su
   become_user: "{{ vagrant_user }}"
+
+# Using libvirt provider requires you to type your administrator password every time you create, start, halt or
+# destroy your domains. Fortunately you can avoid this by adding vagrant user to the libvirt group
+- name: adding vagrant user to libvirt group
+  command: "{{ item }}"
+  with_items:
+    - gpasswd -a {{ vagrant_user }} libvirt
+    - newgrp libvirt

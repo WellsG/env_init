@@ -4,4 +4,5 @@
     - {role: "../roles/basic"}
     - {role: "../roles/vagrant"}
     - {role: "../roles/docker"}
-    - {role: "../roles/cert"}
+      #- {role: "../roles/cert"}
+    - {role: "../roles/devel"}
