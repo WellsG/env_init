@@ -6,3 +6,4 @@
     - {role: "../roles/docker"}
       #- {role: "../roles/cert"}
     - {role: "../roles/devel"}
+    - {role: "../roles/extends"}
