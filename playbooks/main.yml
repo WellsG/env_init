@@ -7,3 +7,4 @@
       #- {role: "../roles/cert"}
     - {role: "../roles/devel"}
     - {role: "../roles/extends"}
+    - {role: "../roles/virtualbox"}

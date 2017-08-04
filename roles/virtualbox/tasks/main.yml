@@ -1,0 +1,22 @@
+---
+
+- name: download virtualbox
+  get_url: url=http://download.virtualbox.org/virtualbox/5.1.26/VirtualBox-5.1-5.1.26_117224_fedora25-1.x86_64.rpm dest=/tmp/virtualbox.rpm
+  tags: vb_o
+
+- name: add virtualbox repositories
+  yum_repository:
+     name: VirtualBox
+     description: Fedora $releasever - $basearch - VirtualBox
+     baseurl: http://download.virtualbox.org/virtualbox/rpm/fedora/$releasever/$basearch
+     enabled: yes
+     gpgcheck: yes
+     repo_gpgcheck: yes
+     gpgkey: https://www.virtualbox.org/download/oracle_vbox.asc
+  tags: vb
+
+- name: install virtualbox
+  dnf:
+    name: "{{ virtualbox_name }}"
+    state: present
+  tags: vb
