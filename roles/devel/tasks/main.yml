@@ -3,3 +3,16 @@
 - name: get gerrit hook - commit-msg
   get_url: url={{ gerrit_url }}/gerrit/tools/hooks/commit-msg dest=/tmp/commit-msg
   tags: configuration
+
+- name: unarchive sublime text
+  become: True
+  become_method: su
+  become_user: "{{ devel_user }}"
+  unarchive:
+     src: https://download.sublimetext.com/sublime_text_3_build_3126_x64.tar.bz2
+     dest: /home/{{ devel_user }}/Downloads/
+     remote_src: yes
+  tags: devel
+
+
+
