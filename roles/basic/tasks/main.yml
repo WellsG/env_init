@@ -8,7 +8,7 @@
      - krb5-workstation
      - git
      - tree
-     - xchat
+     - quassel
   tags: packages
 
 - name: copy the krb5 configuration file
