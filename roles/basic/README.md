@@ -4,7 +4,7 @@ packages including:
 - krb5-workstation
 - git
 - tree
-- xchat
+- quassel
 
 
 generate ssh key
